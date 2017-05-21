@@ -10,8 +10,11 @@ namespace DotNetExperimentation
             {
                 Console.Write("Press a key to continue\n");
                 Console.ReadKey();
-                ThreadingStuff threadClass = new ThreadingStuff();
+                Threading threadClass = new Threading();
+                threadClass.IncrementCounter();
+                Console.ReadKey();
                 threadClass.TryMultithreading();
+                Console.ReadKey();
             }
         }
     }
