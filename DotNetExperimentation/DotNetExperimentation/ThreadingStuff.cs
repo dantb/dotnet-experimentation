@@ -10,13 +10,16 @@ namespace DotNetExperimentation
         {
             SomeClass aClass = new SomeClass();
 
-            Thread thread = new Thread(() => aClass.DoSomething("A"));
+            Thread thread = new Thread(() => aClass.DoSomethingContinuously("A"));
             thread.Start();
+
+            while (!thread.IsAlive);
 
             //set task off
             Task theTask = new Task(() => aClass.DoSomething("B"));
             theTask.Start();
             theTask.Wait();
+
             //now just call it here
             aClass.DoSomething("C");
         }
@@ -33,5 +36,10 @@ namespace DotNetExperimentation
             _someMember++;
         }
 
+        public void DoSomethingContinuously(string thread)
+        {
+            Console.WriteLine($"Thread {thread}, counter value {_someMember}");
+            _someMember++;
+        }
     }
 }
