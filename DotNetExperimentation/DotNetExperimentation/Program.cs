@@ -10,6 +10,9 @@ namespace DotNetExperimentation
             {
                 Console.Write("Press a key to continue\n");
                 Console.ReadKey();
+                AwaitAsync asyncClass = new AwaitAsync();
+                asyncClass.MyMethodAsync();
+                Console.ReadKey();
                 Threading threadClass = new Threading();
                 threadClass.IncrementCounter();
                 Console.ReadKey();
