@@ -73,11 +73,29 @@ namespace ResultsTableTransformation
                     data.Add(modules);
                 }
             }
+
+            foreach (ModuleResultsData item in data)
+            {
+
+            }
         }
 
         private class ModuleResultsData
         {
-            public string ModuleKey;
+            private string _moduleKey;
+
+            public string ModuleKey
+            {
+                get { return _moduleKey; }
+                set
+                {
+                    _moduleKey = value;
+                    if (ModuleMap.ContainsKey(_moduleKey))
+                    {
+                        ModuleName = ModuleMap[_moduleKey];
+                    }
+                }
+            }
             public string ModuleName;
             public int SubmittedCount;
             public int score90_100;
@@ -91,5 +109,23 @@ namespace ResultsTableTransformation
             public int score20_29;
             public int score0_19;
         }
+
+        private static Dictionary<string, string> ModuleMap = new Dictionary<string, string>()
+        {
+            { "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+            //{ "STE", "Software Testing" },
+        };
     }
 }
