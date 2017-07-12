@@ -42,6 +42,8 @@ namespace ResultsTableTransformation
 
         private void btnDoStuff_Click(object sender, EventArgs e)
         {
+            listView1.Items.Clear();
+
             string results = 
                 GetTableAsStringFromPDF(@"C:\Users\User\Downloads\OxfordResults2015-2016.pdf");
 
@@ -114,7 +116,23 @@ namespace ResultsTableTransformation
                 percentages.Add(perc);
             }
 
-
+            foreach (ModuleResultsPercentageData item in percentages)
+            {
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = item.ModuleName;
+                lvi.SubItems.Add(item.SubmittedCount.ToString());
+                lvi.SubItems.Add(item.score90_100.ToString());
+                lvi.SubItems.Add(item.score80_89.ToString());
+                lvi.SubItems.Add(item.score70_79.ToString());
+                lvi.SubItems.Add(item.score60_69.ToString());
+                lvi.SubItems.Add(item.score55_59.ToString());
+                lvi.SubItems.Add(item.score50_54.ToString());
+                lvi.SubItems.Add(item.score40_49.ToString());
+                lvi.SubItems.Add(item.score30_39.ToString());
+                lvi.SubItems.Add(item.score20_29.ToString());
+                lvi.SubItems.Add(item.score0_19.ToString());
+                listView1.Items.Add(lvi);
+            }
         }
 
         private double PercentageOfTotal(double total, double amount)
@@ -123,7 +141,7 @@ namespace ResultsTableTransformation
             {
                 return 0;
             }
-            return (amount / total) * 100;
+            return Math.Round((amount / total) * 100, 2);
         }
 
         private class ModuleResultsData
