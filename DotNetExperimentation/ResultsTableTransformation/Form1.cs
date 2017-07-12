@@ -74,10 +74,36 @@ namespace ResultsTableTransformation
                 }
             }
 
+            List<ModuleResultsPercentageData> percentages = new List<ModuleResultsPercentageData>();
             foreach (ModuleResultsData item in data)
             {
-
+                ModuleResultsPercentageData perc = new ModuleResultsPercentageData()
+                {
+                    ModuleName = item.ModuleName,
+                    score0_19 = PercentageOfTotal(item.SubmittedCount, item.score0_19),
+                    score20_29 = PercentageOfTotal(item.SubmittedCount, item.score20_29),
+                    score30_39 = PercentageOfTotal(item.SubmittedCount, item.score30_39),
+                    score40_49 = PercentageOfTotal(item.SubmittedCount, item.score40_49),
+                    score50_54 = PercentageOfTotal(item.SubmittedCount, item.score50_54),
+                    score55_59 = PercentageOfTotal(item.SubmittedCount, item.score55_59),
+                    score60_69 = PercentageOfTotal(item.SubmittedCount, item.score60_69),
+                    score70_79 = PercentageOfTotal(item.SubmittedCount, item.score70_79),
+                    score80_89 = PercentageOfTotal(item.SubmittedCount, item.score80_89),
+                    score90_100 = PercentageOfTotal(item.SubmittedCount, item.score90_100)
+                };
+                percentages.Add(perc);
             }
+
+
+        }
+
+        private double PercentageOfTotal(double total, double amount)
+        {
+            if (amount == 0)
+            {
+                return 0;
+            }
+            return (amount / total) * 100;
         }
 
         private class ModuleResultsData
@@ -110,22 +136,58 @@ namespace ResultsTableTransformation
             public int score0_19;
         }
 
+        private class ModuleResultsPercentageData
+        {
+            public string ModuleName;
+            public int SubmittedCount;
+            public double score90_100;
+            public double score80_89;
+            public double score70_79;
+            public double score60_69;
+            public double score55_59;
+            public double score50_54;
+            public double score40_49;
+            public double score30_39;
+            public double score20_29;
+            public double score0_19;
+        }
+
         private static Dictionary<string, string> ModuleMap = new Dictionary<string, string>()
         {
+            //Software tools
+            { "ALG", "Algorithmics" },
+            { "OOD", "Object-Oriented Design" },
+            { "OOP", "Object-Oriented Programming" },
+            { "DPA", "Design Patterns" },
             { "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
-            //{ "STE", "Software Testing" },
+            { "ROP", "Robust Programming" },
+            { "DAT", "Database Design" },
+            { "FPR", "Functional Programming" },
+            { "CPR", "Concurrent Programming" },
+            { "APE", "Agile Engineering Practices" },
+            { "XML", "Extensible Markup Language" },
+            { "SOA", "Service Oriented Architectures" },
+            { "CLO", "Cloud Computing and Big Data" },
+            { "ESS", "Embedded Software and Systems" },
+            { "MOB", "Mobile and Sensor Networks" },
+            { "STC", "Service Oriented Architectures" },
+
+            //Software methods
+            { "SEM", "Software Engineering Mathematics" },
+            { "CDS", "Concurrency and Distributed Systems" },
+            { "PMO", "Performance Modelling" },
+            { "SDM", "Software Development Management" },
+            { "AGM", "Agile Methods" },
+            { "IDE", "Interaction Design" },
+            { "REN", "Requirements Engineering" },
+            { "MRQ", "Management of Risk and Quality" },
+            { "PRO", "Process Quality and Improvement" },
+            { "SCS", "Safety Critical Systems" },
+            { "EAR", "Enterprise Architecture" },
+
+            //Software security
+            { "SPR", "Security Principles" },
+            { "SCP", "Secure Programming" },
         };
     }
 }
