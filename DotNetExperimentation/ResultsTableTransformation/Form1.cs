@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ResultsTableTransformation
@@ -55,22 +56,40 @@ namespace ResultsTableTransformation
                 {
                     string[] cols = lines[i].Split(new string[] { " " }, StringSplitOptions.None);
                     string date = string.Concat(cols[1], cols[2], cols[3]);
-                    ModuleResultsData modules = new ModuleResultsData()
+                    if (data.Count(d => d.ModuleKey == cols[0]) == 0)
                     {
-                        ModuleKey = cols[0],
-                        SubmittedCount = int.Parse(cols[6]),
-                        score0_19 = int.Parse(cols[16]),
-                        score20_29 = int.Parse(cols[15]),
-                        score30_39 = int.Parse(cols[14]),
-                        score40_49 = int.Parse(cols[13]),
-                        score50_54 = int.Parse(cols[12]),
-                        score55_59 = int.Parse(cols[11]),
-                        score60_69 = int.Parse(cols[10]),
-                        score70_79 = int.Parse(cols[9]),
-                        score80_89 = int.Parse(cols[8]),
-                        score90_100 = int.Parse(cols[7]),
-                    };
-                    data.Add(modules);
+                        ModuleResultsData modules = new ModuleResultsData()
+                        {
+                            ModuleKey = cols[0],
+                            SubmittedCount = int.Parse(cols[6]),
+                            score0_19 = int.Parse(cols[16]),
+                            score20_29 = int.Parse(cols[15]),
+                            score30_39 = int.Parse(cols[14]),
+                            score40_49 = int.Parse(cols[13]),
+                            score50_54 = int.Parse(cols[12]),
+                            score55_59 = int.Parse(cols[11]),
+                            score60_69 = int.Parse(cols[10]),
+                            score70_79 = int.Parse(cols[9]),
+                            score80_89 = int.Parse(cols[8]),
+                            score90_100 = int.Parse(cols[7]),
+                        };
+                        data.Add(modules);
+                    }
+                    else
+                    {
+                        ModuleResultsData existing = data.First(d => d.ModuleKey == cols[0]);
+                        existing.SubmittedCount += int.Parse(cols[6]);
+                        existing.score0_19 += int.Parse(cols[16]);
+                        existing.score20_29 += int.Parse(cols[15]);
+                        existing.score30_39 += int.Parse(cols[14]);
+                        existing.score40_49 += int.Parse(cols[13]);
+                        existing.score50_54 += int.Parse(cols[12]);
+                        existing.score55_59 += int.Parse(cols[11]);
+                        existing.score60_69 += int.Parse(cols[10]);
+                        existing.score70_79 += int.Parse(cols[9]);
+                        existing.score80_89 += int.Parse(cols[8]);
+                        existing.score90_100 += int.Parse(cols[7]);
+                    }
                 }
             }
 
@@ -80,6 +99,7 @@ namespace ResultsTableTransformation
                 ModuleResultsPercentageData perc = new ModuleResultsPercentageData()
                 {
                     ModuleName = item.ModuleName,
+                    SubmittedCount = item.SubmittedCount,
                     score0_19 = PercentageOfTotal(item.SubmittedCount, item.score0_19),
                     score20_29 = PercentageOfTotal(item.SubmittedCount, item.score20_29),
                     score30_39 = PercentageOfTotal(item.SubmittedCount, item.score30_39),
