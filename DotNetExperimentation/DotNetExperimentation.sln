@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetExperimentation", "DotNetExperimentation\DotNetExperimentation.csproj", "{DBBA874D-A674-4B78-9B7D-68494B48916D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultsTableTransformation", "ResultsTableTransformation\ResultsTableTransformation.csproj", "{089297A8-4F1D-4B7A-9478-7A715325CBA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DBBA874D-A674-4B78-9B7D-68494B48916D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBBA874D-A674-4B78-9B7D-68494B48916D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBBA874D-A674-4B78-9B7D-68494B48916D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{089297A8-4F1D-4B7A-9478-7A715325CBA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{089297A8-4F1D-4B7A-9478-7A715325CBA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{089297A8-4F1D-4B7A-9478-7A715325CBA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{089297A8-4F1D-4B7A-9478-7A715325CBA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

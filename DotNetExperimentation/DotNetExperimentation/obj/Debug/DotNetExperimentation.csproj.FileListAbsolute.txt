@@ -1,0 +1,6 @@
+C:\Development\GithubRepos\dotnet-experimentation\DotNetExperimentation\DotNetExperimentation\bin\Debug\DotNetExperimentation.exe.config
+C:\Development\GithubRepos\dotnet-experimentation\DotNetExperimentation\DotNetExperimentation\bin\Debug\DotNetExperimentation.exe
+C:\Development\GithubRepos\dotnet-experimentation\DotNetExperimentation\DotNetExperimentation\bin\Debug\DotNetExperimentation.pdb
+C:\Development\GithubRepos\dotnet-experimentation\DotNetExperimentation\DotNetExperimentation\obj\Debug\DotNetExperimentation.csprojResolveAssemblyReference.cache
+C:\Development\GithubRepos\dotnet-experimentation\DotNetExperimentation\DotNetExperimentation\obj\Debug\DotNetExperimentation.exe
+C:\Development\GithubRepos\dotnet-experimentation\DotNetExperimentation\DotNetExperimentation\obj\Debug\DotNetExperimentation.pdb
