@@ -25,14 +25,12 @@ namespace ResultsTableTransformation
             InitializeComponent();
         }
 
-        public static string GetTableAsStringFromPDF(string PdfFileName)
+        public static string GetTableAsStringFromPDF(string PdfFileName, int startPage)
         {
             iTextSharp.text.pdf.PdfReader pdfReader = new iTextSharp.text.pdf.PdfReader(PdfFileName);
             string sOut = string.Empty;
 
-            int tableStartPage = 6;
-
-            for (int i = tableStartPage; i <= pdfReader.NumberOfPages; i++)
+            for (int i = startPage; i <= pdfReader.NumberOfPages; i++)
             {
                 iTextSharp.text.pdf.parser.SimpleTextExtractionStrategy its = new iTextSharp.text.pdf.parser.SimpleTextExtractionStrategy();
                 sOut += iTextSharp.text.pdf.parser.PdfTextExtractor.GetTextFromPage(pdfReader, i, its);
@@ -44,9 +42,63 @@ namespace ResultsTableTransformation
         {
             listView1.Items.Clear();
 
-            string results = 
-                GetTableAsStringFromPDF(@"C:\Users\User\Downloads\OxfordResults2015-2016.pdf");
+            string _2015_2016 = @"C:\Users\User\Downloads\OxfordResults2015-2016.pdf";
+            string _2014_2015 = @"C:\Users\User\Downloads\OxfordResults2014-2015.pdf";
+            string _2013_2014 = @"C:\Users\User\Downloads\OxfordResults2013-2014.pdf";
+            string _2012_2013 = @"C:\Users\User\Downloads\OxfordResults2012-2013.pdf";
+            string _2011_2012 = @"C:\Users\User\Downloads\OxfordResults2011-2012.pdf";
 
+            string results =
+                GetTableAsStringFromPDF(_2015_2016, 6);
+
+            results += "\n" +
+                GetTableAsStringFromPDF(_2014_2015, 8);
+
+            results += "\n" +
+                GetTableAsStringFromPDF(_2013_2014, 6);
+
+            results += "\n" +
+                GetTableAsStringFromPDF(_2012_2013, 6);
+
+            results += "\n" +
+                GetTableAsStringFromPDF(_2011_2012, 7);
+
+            ExtractDataFromFile(_2015_2016, results);
+
+        }
+
+        private void ExtractDataFromFile(string _2015_2016, string results)
+        {
+            List<ModuleResultsPercentageData> percentages = GenerateStats(results);
+
+            percentages = percentages.OrderByDescending(p => p.score90_100 + p.score80_89 + p.score70_79).ToList();
+
+            LoadStatsIntoListView(percentages);
+        }
+
+        private void LoadStatsIntoListView(List<ModuleResultsPercentageData> percentages)
+        {
+            foreach (ModuleResultsPercentageData item in percentages)
+            {
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = item.ModuleName;
+                lvi.SubItems.Add(item.SubmittedCount.ToString());
+                lvi.SubItems.Add(item.score90_100.ToString());
+                lvi.SubItems.Add(item.score80_89.ToString());
+                lvi.SubItems.Add(item.score70_79.ToString());
+                lvi.SubItems.Add(item.score60_69.ToString());
+                lvi.SubItems.Add(item.score55_59.ToString());
+                lvi.SubItems.Add(item.score50_54.ToString());
+                lvi.SubItems.Add(item.score40_49.ToString());
+                lvi.SubItems.Add(item.score30_39.ToString());
+                lvi.SubItems.Add(item.score20_29.ToString());
+                lvi.SubItems.Add(item.score0_19.ToString());
+                listView1.Items.Add(lvi);
+            }
+        }
+
+        private List<ModuleResultsPercentageData> GenerateStats(string results)
+        {
             const string LineBreak = "\n";
 
             string[] lines = results.Split(new string[] { LineBreak }, StringSplitOptions.None);
@@ -54,9 +106,15 @@ namespace ResultsTableTransformation
             List<ModuleResultsData> data = new List<ModuleResultsData>();
             for (int i = 1; i < lines.Length; i++)
             {
-                if (!lines[i].Contains("Course"))
+                if (!lines[i].StartsWith("Course"))
                 {
+                    if (lines[i].Contains("Course"))
+                    {
+                        lines[i] = lines[i].Substring(0, lines[i].IndexOf("Course"));
+                    }
                     string[] cols = lines[i].Split(new string[] { " " }, StringSplitOptions.None);
+                    if (cols.Length < 17) continue;
+
                     string date = string.Concat(cols[1], cols[2], cols[3]);
                     if (data.Count(d => d.ModuleKey == cols[0]) == 0)
                     {
@@ -116,23 +174,7 @@ namespace ResultsTableTransformation
                 percentages.Add(perc);
             }
 
-            foreach (ModuleResultsPercentageData item in percentages)
-            {
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = item.ModuleName;
-                lvi.SubItems.Add(item.SubmittedCount.ToString());
-                lvi.SubItems.Add(item.score90_100.ToString());
-                lvi.SubItems.Add(item.score80_89.ToString());
-                lvi.SubItems.Add(item.score70_79.ToString());
-                lvi.SubItems.Add(item.score60_69.ToString());
-                lvi.SubItems.Add(item.score55_59.ToString());
-                lvi.SubItems.Add(item.score50_54.ToString());
-                lvi.SubItems.Add(item.score40_49.ToString());
-                lvi.SubItems.Add(item.score30_39.ToString());
-                lvi.SubItems.Add(item.score20_29.ToString());
-                lvi.SubItems.Add(item.score0_19.ToString());
-                listView1.Items.Add(lvi);
-            }
+            return percentages;
         }
 
         private double PercentageOfTotal(double total, double amount)
