@@ -1,6 +1,6 @@
 ﻿namespace ResultsTableTransformation
 {
-    partial class Form1
+    partial class ResultsViewer
     {
         /// <summary>
         /// Required designer variable.

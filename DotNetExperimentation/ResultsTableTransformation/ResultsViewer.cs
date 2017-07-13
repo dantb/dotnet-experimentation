@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ResultsTableTransformation
 {
-    public partial class Form1 : Form
+    public partial class ResultsViewer : Form
     {
         const string CourseKey = "Course";
         const string Submitted = "Submitted";
@@ -20,33 +20,21 @@ namespace ResultsTableTransformation
         const string _20 = "20-29";
         const string _0 = "20-";
 
-        public Form1()
+        //report files
+        const string _2015_2016 = @"../../ReportFiles\Results2015-2016.pdf";
+        const string _2014_2015 = @"../../ReportFiles\Results2014-2015.pdf";
+        const string _2013_2014 = @"../../ReportFiles\Results2013-2014.pdf";
+        const string _2012_2013 = @"../../ReportFiles\Results2012-2013.pdf";
+        const string _2011_2012 = @"../../ReportFiles\Results2011-2012.pdf";
+
+        public ResultsViewer()
         {
             InitializeComponent();
-        }
-
-        public static string GetTableAsStringFromPDF(string PdfFileName, int startPage)
-        {
-            iTextSharp.text.pdf.PdfReader pdfReader = new iTextSharp.text.pdf.PdfReader(PdfFileName);
-            string sOut = string.Empty;
-
-            for (int i = startPage; i <= pdfReader.NumberOfPages; i++)
-            {
-                iTextSharp.text.pdf.parser.SimpleTextExtractionStrategy its = new iTextSharp.text.pdf.parser.SimpleTextExtractionStrategy();
-                sOut += iTextSharp.text.pdf.parser.PdfTextExtractor.GetTextFromPage(pdfReader, i, its);
-            }
-            return sOut;
         }
 
         private void btnDoStuff_Click(object sender, EventArgs e)
         {
             listView1.Items.Clear();
-
-            string _2015_2016 = @"C:\Users\User\Downloads\OxfordResults2015-2016.pdf";
-            string _2014_2015 = @"C:\Users\User\Downloads\OxfordResults2014-2015.pdf";
-            string _2013_2014 = @"C:\Users\User\Downloads\OxfordResults2013-2014.pdf";
-            string _2012_2013 = @"C:\Users\User\Downloads\OxfordResults2012-2013.pdf";
-            string _2011_2012 = @"C:\Users\User\Downloads\OxfordResults2011-2012.pdf";
 
             string results =
                 GetTableAsStringFromPDF(_2015_2016, 6);
@@ -64,7 +52,19 @@ namespace ResultsTableTransformation
                 GetTableAsStringFromPDF(_2011_2012, 7);
 
             ExtractDataFromFile(_2015_2016, results);
+        }
 
+        private string GetTableAsStringFromPDF(string PdfFileName, int startPage)
+        {
+            iTextSharp.text.pdf.PdfReader pdfReader = new iTextSharp.text.pdf.PdfReader(PdfFileName);
+            string sOut = string.Empty;
+
+            for (int i = startPage; i <= pdfReader.NumberOfPages; i++)
+            {
+                iTextSharp.text.pdf.parser.SimpleTextExtractionStrategy its = new iTextSharp.text.pdf.parser.SimpleTextExtractionStrategy();
+                sOut += iTextSharp.text.pdf.parser.PdfTextExtractor.GetTextFromPage(pdfReader, i, its);
+            }
+            return sOut;
         }
 
         private void ExtractDataFromFile(string _2015_2016, string results)
