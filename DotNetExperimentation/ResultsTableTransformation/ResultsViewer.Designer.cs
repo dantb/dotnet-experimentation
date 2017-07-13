@@ -46,11 +46,12 @@
             // 
             // btnDoStuff
             // 
-            this.btnDoStuff.Location = new System.Drawing.Point(23, 12);
+            this.btnDoStuff.Location = new System.Drawing.Point(17, 10);
+            this.btnDoStuff.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnDoStuff.Name = "btnDoStuff";
-            this.btnDoStuff.Size = new System.Drawing.Size(160, 129);
+            this.btnDoStuff.Size = new System.Drawing.Size(981, 54);
             this.btnDoStuff.TabIndex = 0;
-            this.btnDoStuff.Text = "Do stuff";
+            this.btnDoStuff.Text = "Populate";
             this.btnDoStuff.UseVisualStyleBackColor = true;
             this.btnDoStuff.Click += new System.EventHandler(this.btnDoStuff_Click);
             // 
@@ -70,9 +71,10 @@
             this.columnHeader10,
             this.columnHeader11});
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(46, 190);
+            this.listView1.Location = new System.Drawing.Point(17, 80);
+            this.listView1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(2026, 1120);
+            this.listView1.Size = new System.Drawing.Size(981, 472);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -126,15 +128,16 @@
             // 
             this.columnHeader11.Text = "0-19";
             // 
-            // Form1
+            // ResultsViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(2422, 1636);
+            this.ClientSize = new System.Drawing.Size(1030, 569);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnDoStuff);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Name = "ResultsViewer";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
