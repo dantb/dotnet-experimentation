@@ -7,19 +7,6 @@ namespace ResultsTableTransformation
 {
     public partial class ResultsViewer : Form
     {
-        const string CourseKey = "Course";
-        const string Submitted = "Submitted";
-        const string _90 = "90-100";
-        const string _80 = "80-89";
-        const string _70 = "70-79";
-        const string _60 = "60-69";
-        const string _55 = "55-59";
-        const string _50 = "50-54";
-        const string _40 = "40-49";
-        const string _30 = "30-39";
-        const string _20 = "20-29";
-        const string _0 = "20-";
-
         //report files
         const string _2015_2016 = @"../../ReportFiles\Results2015-2016.pdf";
         const string _2014_2015 = @"../../ReportFiles\Results2014-2015.pdf";
