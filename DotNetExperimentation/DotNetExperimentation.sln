@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetExperimentation", "Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultsTableTransformation", "ResultsTableTransformation\ResultsTableTransformation.csproj", "{089297A8-4F1D-4B7A-9478-7A715325CBA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpSeven", "CSharpSeven\CSharpSeven.csproj", "{595CEF84-F42A-4E1E-AEAE-989973DCA8C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{089297A8-4F1D-4B7A-9478-7A715325CBA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{089297A8-4F1D-4B7A-9478-7A715325CBA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{089297A8-4F1D-4B7A-9478-7A715325CBA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{595CEF84-F42A-4E1E-AEAE-989973DCA8C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{595CEF84-F42A-4E1E-AEAE-989973DCA8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{595CEF84-F42A-4E1E-AEAE-989973DCA8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{595CEF84-F42A-4E1E-AEAE-989973DCA8C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
