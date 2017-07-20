@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharpSeven
 {
@@ -14,6 +10,9 @@ namespace CSharpSeven
 
             WriteBigNumber();
 
+            var result = Calculate(234, 456);
+            WriteLine($"Sum is {result.Sum} and product is {result.Product}");
+
             WriteLine("Press any key to exit...");
             Console.ReadKey();
 
@@ -24,8 +23,13 @@ namespace CSharpSeven
 
             void WriteBigNumber()
             {
-                WriteLine(bigNumber.ToString());
+                WriteLine("Big number is " + bigNumber);
             }
+        }
+
+        private static (double Sum, double Product) Calculate(double x, double y)
+        {
+            return (x + y, x * y);
         }
     }
 }
