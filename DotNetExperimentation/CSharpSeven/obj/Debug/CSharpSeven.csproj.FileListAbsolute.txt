@@ -1,0 +1,7 @@
+C:\Programming\GithubRepos\dotnet-experimentation\DotNetExperimentation\CSharpSeven\bin\Debug\CSharpSeven.exe.config
+C:\Programming\GithubRepos\dotnet-experimentation\DotNetExperimentation\CSharpSeven\bin\Debug\CSharpSeven.exe
+C:\Programming\GithubRepos\dotnet-experimentation\DotNetExperimentation\CSharpSeven\bin\Debug\CSharpSeven.pdb
+C:\Programming\GithubRepos\dotnet-experimentation\DotNetExperimentation\CSharpSeven\bin\Debug\System.ValueTuple.dll
+C:\Programming\GithubRepos\dotnet-experimentation\DotNetExperimentation\CSharpSeven\obj\Debug\CSharpSeven.csprojResolveAssemblyReference.cache
+C:\Programming\GithubRepos\dotnet-experimentation\DotNetExperimentation\CSharpSeven\obj\Debug\CSharpSeven.exe
+C:\Programming\GithubRepos\dotnet-experimentation\DotNetExperimentation\CSharpSeven\obj\Debug\CSharpSeven.pdb
